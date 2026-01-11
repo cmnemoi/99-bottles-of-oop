@@ -1,5 +1,3 @@
-import pytest
-
 from bottles import Bottles
 
 
