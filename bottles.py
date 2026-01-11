@@ -13,6 +13,9 @@ class Bottle:
     def to_string(self) -> str:
         return self.__str__()
 
+    def remove_one(self) -> "Bottle":
+        return Bottle(self.n - 1)
+
 
 class Bottles:
     def song(self) -> str:
@@ -22,25 +25,26 @@ class Bottles:
         return "\n".join([self.verse(n) for n in range(a, b - 1, -1)])
 
     def verse(self, n: int) -> str:
+        bottles = Bottle(n)
         match n:
             case 1:
                 return (
-                    f"{Bottle(n)} of beer on the wall, "
-                    f"{Bottle(n)} of beer.\n"
+                    f"{bottles} of beer on the wall, "
+                    f"{bottles} of beer.\n"
                     "Take it down and pass it around, "
-                    f"{Bottle(n - 1)} of beer on the wall.\n"
+                    f"{bottles.remove_one()} of beer on the wall.\n"
                 )
             case 0:
                 return (
-                    f"{Bottle(n).to_string().capitalize()} of beer on the wall, "
-                    f"{Bottle(n)} of beer.\n"
+                    f"{bottles.to_string().capitalize()} of beer on the wall, "
+                    f"{bottles} of beer.\n"
                     "Go to the store and buy some more, "
-                    f"{Bottle(n - 1)} of beer on the wall.\n"
+                    f"{bottles.remove_one()} of beer on the wall.\n"
                 )
             case _:
                 return (
                     f"{Bottle(n)} of beer on the wall, "
                     f"{Bottle(n)} of beer.\n"
                     "Take one down and pass it around, "
-                    f"{Bottle(n - 1)} of beer on the wall.\n"
+                    f"{bottles.remove_one()} of beer on the wall.\n"
                 )
