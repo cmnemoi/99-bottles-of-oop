@@ -1,3 +1,19 @@
+class Bottle:
+    def __init__(self, n: int) -> None:
+        self.n = n if n >= 0 else 99
+
+    def __str__(self) -> str:
+        if self.n == 0:
+            return "no more bottles"
+        if self.n == 1:
+            return f"{self.n} bottle"
+        else:
+            return f"{self.n} bottles"
+
+    def to_string(self) -> str:
+        return self.__str__()
+
+
 class Bottles:
     def song(self) -> str:
         return self.verses(99, 0)
@@ -9,29 +25,29 @@ class Bottles:
         match n:
             case 2:
                 return (
-                    "2 bottles of beer on the wall, "
-                    "2 bottles of beer.\n"
+                    f"{Bottle(n)} of beer on the wall, "
+                    f"{Bottle(n)} of beer.\n"
                     "Take one down and pass it around, "
-                    "1 bottle of beer on the wall.\n"
+                    f"{Bottle(n - 1)} of beer on the wall.\n"
                 )
             case 1:
                 return (
-                    "1 bottle of beer on the wall, "
-                    "1 bottle of beer.\n"
+                    f"{Bottle(n)} of beer on the wall, "
+                    f"{Bottle(n)} of beer.\n"
                     "Take it down and pass it around, "
-                    "no more bottles of beer on the wall.\n"
+                    f"{Bottle(n - 1)} of beer on the wall.\n"
                 )
             case 0:
                 return (
-                    "No more bottles of beer on the wall, "
-                    "no more bottles of beer.\n"
+                    f"{Bottle(n).to_string().capitalize()} of beer on the wall, "
+                    f"{Bottle(n)} of beer.\n"
                     "Go to the store and buy some more, "
-                    "99 bottles of beer on the wall.\n"
+                    f"{Bottle(n - 1)} of beer on the wall.\n"
                 )
             case _:
                 return (
-                    f"{n} bottles of beer on the wall, "
-                    f"{n} bottles of beer.\n"
+                    f"{Bottle(n)} of beer on the wall, "
+                    f"{Bottle(n)} of beer.\n"
                     "Take one down and pass it around, "
-                    f"{n - 1} bottles of beer on the wall.\n"
+                    f"{Bottle(n - 1)} of beer on the wall.\n"
                 )
