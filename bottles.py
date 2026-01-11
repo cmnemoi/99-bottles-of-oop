@@ -23,13 +23,6 @@ class Bottles:
 
     def verse(self, n: int) -> str:
         match n:
-            case 2:
-                return (
-                    f"{Bottle(n)} of beer on the wall, "
-                    f"{Bottle(n)} of beer.\n"
-                    "Take one down and pass it around, "
-                    f"{Bottle(n - 1)} of beer on the wall.\n"
-                )
             case 1:
                 return (
                     f"{Bottle(n)} of beer on the wall, "
