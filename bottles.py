@@ -13,8 +13,16 @@ class Bottle:
     def to_string(self) -> str:
         return self.__str__()
 
-    def remove_one(self) -> "Bottle":
+    def minus_one(self) -> "Bottle":
         return Bottle(self.n - 1)
+
+    def act(self) -> str:
+        if self.n == 0:
+            return "Go to the store and buy some more, "
+        elif self.n == 1:
+            return "Take it down and pass it around, "
+
+        return "Take one down and pass it around, "
 
 
 class Bottles:
@@ -25,26 +33,10 @@ class Bottles:
         return "\n".join([self.verse(n) for n in range(a, b - 1, -1)])
 
     def verse(self, n: int) -> str:
-        bottles = Bottle(n)
-        match n:
-            case 1:
-                return (
-                    f"{bottles} of beer on the wall, "
-                    f"{bottles} of beer.\n"
-                    "Take it down and pass it around, "
-                    f"{bottles.remove_one()} of beer on the wall.\n"
-                )
-            case 0:
-                return (
-                    f"{bottles.to_string().capitalize()} of beer on the wall, "
-                    f"{bottles} of beer.\n"
-                    "Go to the store and buy some more, "
-                    f"{bottles.remove_one()} of beer on the wall.\n"
-                )
-            case _:
-                return (
-                    f"{Bottle(n)} of beer on the wall, "
-                    f"{Bottle(n)} of beer.\n"
-                    "Take one down and pass it around, "
-                    f"{bottles.remove_one()} of beer on the wall.\n"
-                )
+        n_bottles = Bottle(n)
+        return (
+            f"{n_bottles.to_string().capitalize()} of beer on the wall, "
+            f"{n_bottles} of beer.\n"
+            f"{n_bottles.act()}"
+            f"{n_bottles.minus_one()} of beer on the wall.\n"
+        )
