@@ -12,5 +12,22 @@
         "."
     ],
     "python.testing.unittestEnabled": false,
-    "python.testing.pytestEnabled": true
+    "python.testing.pytestEnabled": true,
+    "restoreTerminals.terminals": [
+        {
+            "splitTerminals": [
+                {
+                    "name": "root",
+                },
+            ]
+        },
+        {
+            "splitTerminals": [
+                {
+                    "name": "watch tests",
+                    "commands": ["uv run ptw . -vv --clear --now"]
+                },
+            ]
+        },
+    ]
 }

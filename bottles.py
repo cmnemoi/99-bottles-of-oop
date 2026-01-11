@@ -6,21 +6,38 @@ class Bottles:
         return "\n".join([self.verse(n) for n in range(a, b - 1, -1)])
 
     def verse(self, n: int) -> str:
-        return (
-            f"{n if n > 0 else 'no more'.capitalize()} {'bottle' if n == 1 else 'bottles'} of beer on the wall, "
-            f"{n if n > 0 else 'no more'} {'bottle' if n == 1 else 'bottles'} of beer.\n"
-            + self._third_sentence(n)
-            + f"{self._last_nb_bottles(n)} {'bottle' if n - 1 == 1 else 'bottles'} of beer on the wall.\n"
-        )
-
-    def _last_nb_bottles(self, n: int) -> str:
+        if n == 3:
+            return (
+                "3 bottles of beer on the wall, "
+                "3 bottles of beer.\n"
+                "Take one down and pass it around, "
+                "2 bottles of beer on the wall.\n"
+            )
+        if n == 2:
+            return (
+                "2 bottles of beer on the wall, "
+                "2 bottles of beer.\n"
+                "Take one down and pass it around, "
+                "1 bottle of beer on the wall.\n"
+            )
+        if n == 1:
+            return (
+                "1 bottle of beer on the wall, "
+                "1 bottle of beer.\n"
+                "Take it down and pass it around, "
+                "no more bottles of beer on the wall.\n"
+            )
         if n == 0:
-            return "99"
-
-        return "no more" if n < 2 else str(n - 1)
-
-    def _third_sentence(self, n: int) -> str:
-        if n == 0:
-            return "Go to the store and buy some more, "
-
-        return f"Take {'it' if n <= 1 else 'one'} down and pass it around, "
+            return (
+                "No more bottles of beer on the wall, "
+                "no more bottles of beer.\n"
+                "Go to the store and buy some more, "
+                "99 bottles of beer on the wall.\n"
+            )
+        else:
+            return (
+                f"{n} bottles of beer on the wall, "
+                f"{n} bottles of beer.\n"
+                "Take one down and pass it around, "
+                f"{n - 1} bottles of beer on the wall.\n"
+            )
