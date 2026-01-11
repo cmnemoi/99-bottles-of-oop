@@ -9,6 +9,10 @@ def test_two_bottles() -> None:
     assert str(Bottle(2)) == "2 bottles"
 
 
+def test_six_bottles() -> None:
+    assert str(Bottle(6)) == "1 six-pack"
+
+
 def test_99_bottles() -> None:
     assert str(Bottle(99)) == "99 bottles"
 

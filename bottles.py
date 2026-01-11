@@ -7,8 +7,10 @@ class Bottle:
             return "no more bottles"
         if self.n == 1:
             return f"{self.n} bottle"
-        else:
-            return f"{self.n} bottles"
+        if self.n == 6:
+            return "1 six-pack"
+
+        return f"{self.n} bottles"
 
     def to_string(self) -> str:
         return self.__str__()
@@ -30,7 +32,7 @@ class Bottles:
         return self.verses(99, 0)
 
     def verses(self, a: int, b: int) -> str:
-        return "\n".join([self.verse(n) for n in range(a, b - 1, -1)])
+        return "\n".join(self.verse(n) for n in range(a, b - 1, -1))
 
     def verse(self, n: int) -> str:
         n_bottles = Bottle(n)
