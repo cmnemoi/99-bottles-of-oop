@@ -7,12 +7,12 @@ class Bottles:
 
     def verse(self, n: int) -> str:
         match n:
-            case 2:
+            case 0:
                 return (
-                    "2 bottles of beer on the wall, "
-                    "2 bottles of beer.\n"
-                    "Take one down and pass it around, "
-                    "1 bottle of beer on the wall.\n"
+                    "No more bottles of beer on the wall, "
+                    "no more bottles of beer.\n"
+                    "Go to the store and buy some more, "
+                    "99 bottles of beer on the wall.\n"
                 )
             case 1:
                 return (
@@ -21,17 +21,13 @@ class Bottles:
                     "Take it down and pass it around, "
                     "no more bottles of beer on the wall.\n"
                 )
-            case 0:
-                return (
-                    "No more bottles of beer on the wall, "
-                    "no more bottles of beer.\n"
-                    "Go to the store and buy some more, "
-                    "99 bottles of beer on the wall.\n"
-                )
             case _:
                 return (
                     f"{n} bottles of beer on the wall, "
                     f"{n} bottles of beer.\n"
                     "Take one down and pass it around, "
-                    f"{n - 1} bottles of beer on the wall.\n"
+                    f"{n - 1} {self._bottles(n - 1)} of beer on the wall.\n"
                 )
+
+    def _bottles(self, n) -> str:
+        return "bottles" if n > 1 else "bottle"
