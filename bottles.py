@@ -26,8 +26,11 @@ class Bottles:
                     f"{n} bottles of beer on the wall, "
                     f"{n} bottles of beer.\n"
                     "Take one down and pass it around, "
-                    f"{n - 1} {self._bottles(n - 1)} of beer on the wall.\n"
+                    f"{n - 1} {self.container(n - 1)} of beer on the wall.\n"
                 )
 
-    def _bottles(self, n) -> str:
-        return "bottles" if n > 1 else "bottle"
+    def container(self, n) -> str:
+        if n == 1:
+            return "bottle"
+        else:
+            return "bottles"
