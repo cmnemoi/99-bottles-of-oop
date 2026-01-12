@@ -14,23 +14,28 @@ class Bottles:
                     "Go to the store and buy some more, "
                     "99 bottles of beer on the wall.\n"
                 )
-            case 1:
-                return (
-                    "1 bottle of beer on the wall, "
-                    "1 bottle of beer.\n"
-                    "Take it down and pass it around, "
-                    "no more bottles of beer on the wall.\n"
-                )
             case _:
                 return (
-                    f"{n} bottles of beer on the wall, "
-                    f"{n} bottles of beer.\n"
-                    "Take one down and pass it around, "
-                    f"{n - 1} {self.container(n - 1)} of beer on the wall.\n"
+                    f"{n} {self._container(n)} of beer on the wall, "
+                    f"{n} {self._container(n)} of beer.\n"
+                    f"Take {self._pronoun(n)} down and pass it around, "
+                    f"{self._quantity(n - 1)} {self._container(n - 1)} of beer on the wall.\n"
                 )
 
-    def container(self, n) -> str:
+    def _container(self, n: int) -> str:
         if n == 1:
             return "bottle"
         else:
             return "bottles"
+
+    def _pronoun(self, n: int) -> str:
+        if n == 1:
+            return "it"
+        else:
+            return "one"
+
+    def _quantity(self, n: int) -> str:
+        if n == 0:
+            return "no more"
+        else:
+            return str(n)
